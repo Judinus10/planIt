@@ -6,6 +6,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 20011006Jj
       MYSQL_DATABASE: planit
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "3306:3306"
 
