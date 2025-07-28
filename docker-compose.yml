@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8
+    container_name: planit-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 20011006Jj
+      MYSQL_DATABASE: planit
+    ports:
+      - "3306:3306"
+
+  backend:
+    build: ./backend
+    container_name: planit-backend
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/planit
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 20011006Jj
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./frontend
+    container_name: planit-frontend
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
