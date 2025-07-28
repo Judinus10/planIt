@@ -1,0 +1,9 @@
+FROM openjdk:17
+COPY target/planit.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+
+
+#  Build Spring Boot app first using:
+
+# cd backend
+# ./mvnw clean package
