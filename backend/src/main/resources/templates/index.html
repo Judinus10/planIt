@@ -1,0 +1,26 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spring Boot Connect</title>
+</head>
+<body>
+    <h1>Spring Boot Connection Test</h1>
+    <button onclick="fetchGreeting()">Click to Get Greeting</button>
+    <p id="response"></p>
+
+    <script>
+        function fetchGreeting() {
+            fetch('http://localhost:8080/api/hello')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("response").innerText = data;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    document.getElementById("response").innerText = "Failed to connect.";
+                });
+        }
+    </script>
+</body>
+</html>
